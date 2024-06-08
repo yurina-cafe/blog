@@ -11,11 +11,11 @@ export interface HttpOptions {
 export interface IRequestBody {
   [key: string]: any
 }
-export const useHttp = (options: HttpOptions) => {
+export const useHttp = <T extends IRequestBody>(options: HttpOptions) => {
   const config = {
     method: options.method,
     url: baseURL + options.url,
     data: options.data
   }
-  return axios(config)
+  return axios<T>(config)
 }
