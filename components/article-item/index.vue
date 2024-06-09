@@ -17,14 +17,16 @@ onMounted(() => {
 </script>
 <template>
   <div class="article-item">
-    <div class="article-title">
-      <a class="article-title btn">
-        <div class="article-title content">
-          <div>></div>
-          <div>{{ articleInfo?.title }}</div>
-        </div>
-      </a>
-    </div>
+    <NuxtLink :to="`/article/${articleInfo?.title}`">
+      <div class="article-title">
+        <a class="article-title btn">
+          <div class="article-title content">
+            <div>></div>
+            <div>{{ articleInfo?.title }}</div>
+          </div>
+        </a>
+      </div>
+    </NuxtLink>
     <div class="article-tag">{{ articleInfo?.tag }}</div>
     <div class="article-time">{{ articleInfo?.time }}</div>
   </div>
