@@ -4,7 +4,7 @@
   <div>
     <div class="navigator">
       <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/articles">Articles</NuxtLink>
+      <NuxtLink to="/article">Articles</NuxtLink>
       <NuxtLink to="/post">Post</NuxtLink>
     </div>
     <slot></slot>
