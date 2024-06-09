@@ -14,8 +14,9 @@ const article = ref<ArticlePosting>({
 });
 
 const post = () => {
+  const time = formatedDate(new Date());
   const data = {
-    title: `${article.value.title}@${Date.now()}@${article.value.tag}`,
+    title: `${article.value.title}@${time}@${article.value.tag}`,
     content: article.value.content,
   };
   debugPostArticle(data);
