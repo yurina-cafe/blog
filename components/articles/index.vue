@@ -9,11 +9,11 @@ const fetch = () => {
     articleNames.value = res;
   });
 };
+onMounted(fetch)
 </script>
 
 <template>
   <div class="articles">
-    <button @click="fetch"></button>
     <ArticleItem v-for="i in articleNames" :articleName="i" :key="i" />
   </div>
 </template>
