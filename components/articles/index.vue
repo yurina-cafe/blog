@@ -3,6 +3,7 @@ import { debugGetAllArticles } from "~/utils/get-all-debug";
 
 const articleNames = ref<string[]>();
 
+
 const fetch = () => {
   debugGetAllArticles().then((res) => {
     articleNames.value = res;
@@ -11,10 +12,16 @@ const fetch = () => {
 </script>
 
 <template>
-  <div>
+  <div class="articles">
     <button @click="fetch"></button>
-    <div v-for="i in articleNames">{{ i }}</div>
+    <ArticleItem v-for="i in articleNames" :articleName="i" :key="i" />
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+</style>

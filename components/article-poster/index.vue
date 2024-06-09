@@ -1,10 +1,5 @@
 <script setup lang="ts">
-export interface ArticlePosting {
-  title: string; // 文章的标题，会转化成文件名的第一部分
-  time: string; // 文章的时间，会转化成文件名的第二部分
-  tag: string; // 文章的标签，会转化成文件名的第三部分
-  content: string;
-}
+import type { ArticlePosting } from '~/types/article';
 
 const article = ref<ArticlePosting>({
   title: "",
