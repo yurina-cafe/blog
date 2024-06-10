@@ -10,5 +10,5 @@ export const debugGetArticles = async (articleFileTitle: string) => {
     },
   };
   const res = await axios.request(config);
-  return res.data as string[];
+  return res.data as string;
 };
