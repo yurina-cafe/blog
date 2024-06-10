@@ -5,11 +5,12 @@ const props = defineProps<{
   articleName: string
 }>()
 
-const articleInfo = ref<ArticleInfo>();
+const articleInfo = ref<ArticleInfo>(
+  { title: "", time: "", tag: "" }
+);
 const splitArticleName = (name: string) => {
   let [title, time, tag] = name.replace(".md", "").split("@");
 
-  time = formatedTime(time);
   return { title, time, tag };
 };
 onMounted(() => {
@@ -24,13 +25,13 @@ onMounted(() => {
         <a class="article-title btn">
           <div class="article-title content">
             <div>></div>
-            <div>{{ articleInfo?.title }}</div>
+            <div>{{ articleInfo.title }}</div>
           </div>
         </a>
       </div>
     </NuxtLink>
-    <div class="article-tag">{{ articleInfo?.tag }}</div>
-    <div class="article-time">{{ articleInfo?.time }}</div>
+    <div class="article-tag">{{ articleInfo.tag }}</div>
+    <div class="article-time">{{ formatedTime(articleInfo.time) }}</div>
   </div>
 </template>
 
