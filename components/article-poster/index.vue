@@ -21,7 +21,7 @@ const post = () => {
 <template>
   <div class="article-poster">
     <h1>文章发布</h1>
-    <div class="article">
+    <div class="article-edit">
       <div class="text-input">
         <input type="text" v-model="article.title" placeholder="文章标题" />
       </div>
@@ -48,7 +48,7 @@ const post = () => {
   align-items: center;
 }
 
-.article {
+.article-edit {
   display: flex;
   flex-direction: column;
   justify-content: center;
