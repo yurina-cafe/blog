@@ -17,7 +17,8 @@ onMounted(() => {
 </script>
 <template>
   <div class="article-item">
-    <NuxtLink :to="`/article/${articleInfo?.title}`">
+    <NuxtLink
+      :to="{ path: `/article/${articleInfo?.title}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
       <div class="article-title">
         <a class="article-title btn">
           <div class="article-title content">

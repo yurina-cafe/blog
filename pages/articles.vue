@@ -2,10 +2,6 @@
 
 <template>
   <div>
-    <div class="test viewer">
-      <h1>Viewer</h1>
-      <ArticleViewer file-name="123"></ArticleViewer>
-    </div>
     <div class="test list">
       <Articles></Articles>
     </div>
