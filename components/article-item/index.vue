@@ -9,6 +9,7 @@ const articleInfo = ref<ArticleInfo>();
 const splitArticleName = (name: string) => {
   let [title, time, tag] = name.replace(".md", "").split("@");
 
+  time = formatedTime(time);
   return { title, time, tag };
 };
 onMounted(() => {
