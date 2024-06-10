@@ -2,11 +2,7 @@
 
 <template>
   <div class="layout">
-    <div class="navigator">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/articles">Articles</NuxtLink>
-      <NuxtLink to="/post">Post</NuxtLink>
-    </div>
+    <Navigator />
     <main class="main">
       <slot />
     </main>
