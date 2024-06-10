@@ -30,8 +30,8 @@ onMounted(() => {
         </a>
       </div>
     </NuxtLink>
-    <div class="article-tag">{{ articleInfo.tag }}</div>
-    <div class="article-time">{{ formatedTime(articleInfo.time) }}</div>
+    <div class="article-item__tag">{{ articleInfo.tag }}</div>
+    <div class="article-item__time">{{ formatedTime(articleInfo.time) }}</div>
   </div>
 </template>
 
@@ -92,13 +92,13 @@ onMounted(() => {
   visibility: visible;
 }
 
-.article-tag {
+.article-item__tag {
   background-color: #f0f0f0;
   border-radius: 5px;
   padding: 5px;
 }
 
-.article-time {
+.article-item__time {
   font-weight: 300;
   margin-left: auto;
 }
