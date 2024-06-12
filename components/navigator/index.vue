@@ -4,14 +4,14 @@
 <template>
   <div class="navigator">
     <div class="navigator-content">
-      <div class="flex-1 ">
+      <div class="flex-1">
         <NuxtLink to="/">
           <span class="navigator__title">
             Home
           </span>
         </NuxtLink>
       </div>
-      <div class="flex gap-2 ">
+      <div class="flex gap-2">
         <div>
           <NuxtLink to="/articles">
             Articles
@@ -27,14 +27,13 @@
   </div>
 </template>
 
-<style coped lang="scss">
+<style scoped lang="scss">
 .navigator {
-  @apply h-[50px];
+  @apply h-[50px] w-full;
   @apply flex justify-center p-0;
 
   &-content {
-    @apply w-[1200px];
-    @apply backdrop-blur;
+    @apply backdrop-blur max-w-[1200px] w-full;
     @apply flex items-center;
   }
 
