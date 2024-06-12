@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { debugGetAllArticles } from "~/utils/get-all-debug";
+import { GetArticles } from "~/api/article";
 
 const articleNames = ref<string[]>();
 
-
 const fetch = () => {
-  debugGetAllArticles().then((res) => {
-    articleNames.value = res;
+  GetArticles().then((res) => {
+    articleNames.value = res.data;
   });
 };
 onMounted(fetch)

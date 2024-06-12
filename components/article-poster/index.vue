@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { PostArticle } from '~/api/article';
 import type { ArticlePosting } from '~/types/article';
 
 const article = ref<ArticlePosting>({
@@ -14,7 +15,7 @@ const post = () => {
     title: `${article.value.title}@${time}@${article.value.tag}`,
     content: article.value.content,
   };
-  debugPostArticle(data);
+  PostArticle(data);
 };
 </script>
 

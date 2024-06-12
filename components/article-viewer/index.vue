@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { marked } from 'marked';
+import { GetArticleContent } from '~/api/article';
 
 const props = defineProps<{
   fileName: string;
@@ -16,8 +17,8 @@ marked.setOptions({
 const content = ref();
 // fetch article and marked it
 const fetch = () => {
-  debugGetArticles(props.fileName).then((res) => {
-    content.value = marked(res)
+  GetArticleContent(props.fileName).then((res) => {
+    content.value = marked(res.data)
   });
 };
 
