@@ -9,7 +9,6 @@ export const debugGetArticles = async (articleFileTitle: string) => {
       "Content-Type": "application/json",
     },
   };
-
   const res = await axios.request(config);
-  return res.data as string[];
+  return res.data as string;
 };

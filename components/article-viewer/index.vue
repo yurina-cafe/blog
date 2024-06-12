@@ -1,11 +1,23 @@
 <script setup lang="ts">
-const article = ref<object>();
+import { marked } from 'marked';
+
 const props = defineProps<{
   fileName: string;
 }>();
+
+const render = new marked.Renderer();
+
+marked.setOptions({
+  renderer: render,
+  gfm: true,
+  pedantic: false,
+});
+
+const content = ref();
+// fetch article and marked it
 const fetch = () => {
   debugGetArticles(props.fileName).then((res) => {
-    article.value = res;
+    content.value = marked(res)
   });
 };
 
@@ -13,7 +25,7 @@ onMounted(fetch);
 </script>
 
 <template>
-  <div>{{ article }}</div>
+  <div v-html="content"></div>
 </template>
 
 <style lang="scss" scoped></style>
