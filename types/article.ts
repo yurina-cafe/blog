@@ -1,10 +1,11 @@
 export interface ArticleInfo {
   title: string;
-  time: string;
-  tag: string;
+  content: string;
 }
 
-export interface ArticlePosting extends ArticleInfo {
-  content: string;
+export interface ArticleInfoSplit {
+  title: string;
+  tags: string;
+  time: string;
 }
 
