@@ -2,11 +2,20 @@
 
 <template>
   <div>
-    <div class="test poster">
+    <div class="poster">
       <h1>Poster</h1>
       <ArticlePoster></ArticlePoster>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.poster {
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
