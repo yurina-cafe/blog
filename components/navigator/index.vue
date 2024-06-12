@@ -30,7 +30,7 @@
 <style scoped lang="scss">
 .navigator {
   @apply h-[50px] w-full;
-  @apply flex justify-center p-0;
+  @apply flex justify-center py-2;
 
   &-content {
     @apply backdrop-blur max-w-[1200px] w-full;
