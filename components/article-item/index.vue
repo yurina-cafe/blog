@@ -30,7 +30,7 @@ onMounted(() => {
         </a>
       </div>
     </NuxtLink>
-    <div class="article-item__tag">{{ articleInfo.tag }}</div>
+    <div v-if="articleInfo.tag" class="article-item__tag">{{ articleInfo.tag }}</div>
     <div class="article-item__time">{{ formatedTime(articleInfo.time) }}</div>
   </div>
 </template>
