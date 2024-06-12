@@ -11,7 +11,7 @@ export const GetArticleContent = async (name: string) => {
   return res.data as string
 }
 
-export const PostArticle = (data: ArticleInfo) => {
-  const res = useHttp('/article', 'POST', data)
+export const PostArticle = async (data: ArticleInfo) => {
+  const res = await useHttp('/article', 'POST', data)
   return res
 }

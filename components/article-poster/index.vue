@@ -15,13 +15,19 @@ const article = ref<ArticleInfoPost>({
   content: "",
 });
 
-const post = () => {
+const router = useRouter();
+const post = async () => {
   const time = formatedDate(new Date());
   const data: ArticleInfo = {
-    title: `${article.value.title}@${time}@${article.value.title.tag}`,
+    title: `${article.value.title.name}@${time}@${article.value.title.tag}`,
     content: article.value.content,
   };
-  PostArticle(data);
+  try {
+    await PostArticle(data);
+    router.push('/articles');
+  } catch (e) {
+    console.error(e)
+  }
 };
 </script>
 
