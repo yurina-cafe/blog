@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { GetArticles } from "~/api/article";
+import { GetArticles } from "~/composables/article";
 
 const articleNames = ref<string[]>();
 
-const fetch = () => {
-  GetArticles().then((res) => {
-    articleNames.value = res.data;
-  });
+const fetch = async () => {
+  const data = await GetArticles();
+  articleNames.value = data;
 };
 onMounted(fetch)
 </script>
