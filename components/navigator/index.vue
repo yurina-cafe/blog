@@ -4,50 +4,43 @@
 <template>
   <div class="navigator">
     <div class="navigator-content">
-      <div class="content-home">
+      <div class="flex-1 ">
         <NuxtLink to="/">
-          <span class="title">
+          <span class="navigator__title">
             Home
           </span>
         </NuxtLink>
       </div>
-      <div class="content-list">
-        <NuxtLink to="/articles">Articles</NuxtLink>
-        <NuxtLink to="/post">Post</NuxtLink>
+      <div class="flex gap-2 ">
+        <div>
+          <NuxtLink to="/articles">
+            Articles
+          </NuxtLink>
+        </div>
+        <div>
+          <NuxtLink to="/post">
+            Post
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style coped>
+<style coped lang="scss">
 .navigator {
-  height: 50px;
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
+  @apply h-[50px];
+  @apply flex justify-center p-0;
 
-.navigator-content {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  &-content {
+    @apply w-[1200px];
+    @apply backdrop-blur;
+    @apply flex items-center;
+  }
 
-.title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.content-home {
-  display: flex;
-  flex: 1;
-}
-
-.content-list {
-  display: flex;
-  gap: 20px;
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+  }
 }
 </style>
