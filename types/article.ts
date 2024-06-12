@@ -4,8 +4,8 @@ export interface ArticleInfo {
 }
 
 export interface ArticleInfoSplit {
-  title: string;
-  tags: string;
+  name: string;
+  tag: string;
   time: string;
 }
 
