@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { debugGetAllArticles } from "~/utils/get-all-debug";
+import { GetArticles } from "~/composables/article";
 
 const articleNames = ref<string[]>();
 
-
-const fetch = () => {
-  debugGetAllArticles().then((res) => {
-    articleNames.value = res;
-  });
+const fetch = async () => {
+  const data = await GetArticles();
+  articleNames.value = data;
 };
 onMounted(fetch)
 </script>

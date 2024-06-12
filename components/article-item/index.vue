@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { ArticleInfo } from '~/types/article';
+import type { ArticleInfoSplit } from '~/types/article';
 
 const props = defineProps<{
   articleName: string
 }>()
 
-const articleInfo = ref<ArticleInfo>(
-  { title: "", time: "", tag: "" }
+const articleInfo = ref<ArticleInfoSplit>(
+  { name: "", time: "", tag: "" }
 );
-const splitArticleName = (name: string) => {
-  let [title, time, tag] = name.replace(".md", "").split("@");
+const splitArticleName = (title: string) => {
+  let [name, time, tag] = title.replace(".md", "").split("@");
 
-  return { title, time, tag };
+  return { name, time, tag } as ArticleInfoSplit;
 };
 onMounted(() => {
   articleInfo.value = splitArticleName(props.articleName);
@@ -20,12 +20,12 @@ onMounted(() => {
 <template>
   <div class="article-item">
     <NuxtLink
-      :to="{ path: `/article/${articleInfo?.title}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
+      :to="{ path: `/article/${articleInfo?.name}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
       <div class="article-title">
         <a class="article-title btn">
           <div class="article-title content">
             <div>></div>
-            <div>{{ articleInfo.title }}</div>
+            <div>{{ articleInfo.name }}</div>
           </div>
         </a>
       </div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { marked } from 'marked';
+import { GetArticleContent } from '~/composables/article';
 
 const props = defineProps<{
   fileName: string;
@@ -15,10 +16,9 @@ marked.setOptions({
 
 const content = ref();
 // fetch article and marked it
-const fetch = () => {
-  debugGetArticles(props.fileName).then((res) => {
-    content.value = marked(res)
-  });
+const fetch = async () => {
+  const data = await GetArticleContent(props.fileName);
+  content.value = marked(data)
 };
 
 onMounted(fetch);

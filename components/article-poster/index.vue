@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import type { ArticlePosting } from '~/types/article';
+import { PostArticle } from '~/composables/article';
+import type { ArticleInfo, ArticleInfoSplit } from '~/types/article';
 
-const article = ref<ArticlePosting>({
-  title: "",
-  time: "",
-  tag: "",
+interface ArticleInfoPost {
+  title: ArticleInfoSplit;
+  content: string;
+}
+const article = ref<ArticleInfoPost>({
+  title: {
+    name: "",
+    time: "",
+    tag: "",
+  },
   content: "",
 });
 
 const post = () => {
   const time = formatedDate(new Date());
-  const data = {
-    title: `${article.value.title}@${time}@${article.value.tag}`,
+  const data: ArticleInfo = {
+    title: `${article.value.title}@${time}@${article.value.title.tag}`,
     content: article.value.content,
   };
-  debugPostArticle(data);
+  PostArticle(data);
 };
 </script>
 
@@ -23,10 +30,10 @@ const post = () => {
     <h1>文章发布</h1>
     <div class="article-edit">
       <div class="text-input">
-        <input type="text" v-model="article.title" placeholder="文章标题" />
+        <input type="text" v-model="article.title.name" placeholder="文章标题" />
       </div>
       <div class="text-input">
-        <input type="text" v-model="article.tag" placeholder="文章标签" />
+        <input type="text" v-model="article.title.tag" placeholder="文章标签" />
       </div>
       <div class="text-content">
         <textarea v-model="article.content" placeholder="文章内容"></textarea>

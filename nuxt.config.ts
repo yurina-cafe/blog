@@ -2,5 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/style/main.css'],
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+  ],
+  runtimeConfig: {
+    public: {
+      baseApi: process.env.BASE_API,
+    }
+  },
 })
