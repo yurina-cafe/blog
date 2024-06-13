@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { ActionType, ClickType, type SortMethod } from '~/types/sort';
+import { ActionType, ClickType } from '~/types/sort';
 
+export interface SortMethod {
+  tagAction: ActionType;
+  timeAction: ActionType;
+}
 const props = defineProps<SortMethod>()
 
 const tagAction = ref(props.tagAction);

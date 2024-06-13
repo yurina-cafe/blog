@@ -1,8 +1,3 @@
-export interface SortMethod {
-  tagAction: string;
-  timeAction: string;
-}
-
 export enum ActionType {
   Up = 'up',
   Down = 'down'
