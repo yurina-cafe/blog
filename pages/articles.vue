@@ -2,10 +2,9 @@
 import type { SortMethod } from '~/components/article-sort/index.vue';
 import { ActionType, ClickType } from '~/types/sort';
 
-const sortMethod = ref<SortMethod>({ clickType: ClickType.Time, action: ActionType.Up })
+const sortMethod = ref<SortMethod>({ clickType: ClickType.Time, action: ActionType.Down })
 const handleSort = (v: SortMethod) => {
   sortMethod.value = v
-  console.log('2', sortMethod.value)
 }
 </script>
 

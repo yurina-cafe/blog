@@ -11,29 +11,22 @@ interface SortMethod {
 
 const props = defineProps<SortMethod>();
 
-const nameSplitList = ref<ArticleNameSplit[]>([]);
-const articleNames = ref<string[]>();
+const titleSplitList = ref<ArticleNameSplit[]>([]);
 
 const fetch = async () => {
   const data = await GetArticles();
-  data.forEach((title: string) => {
-    nameSplitList.value.push(splitArticleName(title));
-  });
-  articleNames.value = data;
-  console.log(nameSplitList.value);
+  titleSplitList.value = sortArticles(data.map((title: string) => splitArticleName(title)), props.clickType, props.action);
 };
 onMounted(fetch)
 
 watch(() => props, (newProps) => {
-  console.log(nameSplitList.value);
-  nameSplitList.value = sortArticles(nameSplitList.value, newProps.clickType, newProps.action);
-  console.log(nameSplitList.value);
+  titleSplitList.value = sortArticles(titleSplitList.value, newProps.clickType, newProps.action);
 }, { deep: true })
 </script>
 
 <template>
   <div class="articles">
-    <ArticleItem v-for="name in articleNames" :articleName="name" :key="name" />
+    <ArticleItem v-for="(title, index) in titleSplitList" :title="title" :key="index" />
   </div>
 </template>
 
