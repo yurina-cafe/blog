@@ -19,7 +19,7 @@ const fetch = async () => {
 };
 onMounted(fetch)
 
-watch(() => props, (newProps) => {
+watch(() => props, (newProps: SortMethod) => {
   titleSplitList.value = sortArticles(titleSplitList.value, newProps.clickType, newProps.action);
 }, { deep: true })
 </script>
