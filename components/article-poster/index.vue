@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { PostArticle } from '~/composables/article';
-import type { ArticleInfo, ArticleInfoSplit } from '~/types/article';
+import type { ArticleInfo, ArticleNameSplit } from '~/types/article';
 
 interface ArticleInfoPost {
-  title: ArticleInfoSplit;
+  title: ArticleNameSplit;
   content: string;
 }
 const article = ref<ArticleInfoPost>({

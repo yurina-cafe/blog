@@ -1,39 +1,29 @@
 <script setup lang="ts">
-import type { ArticleInfoSplit } from '~/types/article';
+import { splitArticleName } from '~/utils/article';
+import type { ArticleNameSplit } from '~/types/article';
 
 const props = defineProps<{
-  articleName: string
+  title: ArticleNameSplit
 }>()
 
-const articleInfo = ref<ArticleInfoSplit>(
-  { name: "", time: "", tag: "" }
-);
-const splitArticleName = (title: string) => {
-  let [name, time, tag] = title.replace(".md", "").split("@");
-
-  return { name, time, tag } as ArticleInfoSplit;
-};
-onMounted(() => {
-  articleInfo.value = splitArticleName(props.articleName);
-});
 </script>
 <template>
   <div class="article-item">
     <div class="article-item__header">
       <NuxtLink
-        :to="{ path: `/article/${articleInfo?.name}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
+        :to="{ path: `/article/${props.title?.name}`, query: { tag: props.title?.tag, time: props.title?.time } }">
         <div class="article-title">
           <a class="article-title btn">
             <div class="article-title content">
               <div>></div>
-              <div>{{ articleInfo.name }}</div>
+              <div>{{ props.title.name }}</div>
             </div>
           </a>
         </div>
       </NuxtLink>
-      <div v-if="articleInfo.tag" class="article-item__tag">{{ articleInfo.tag }}</div>
+      <div v-if="props.title.tag" class="article-item__tag">{{ props.title.tag }}</div>
     </div>
-    <div class="article-item__time">{{ formatedTime(articleInfo.time) }}</div>
+    <div class="article-item__time">{{ formatedTime(props.title.time) }}</div>
   </div>
 </template>
 

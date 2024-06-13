@@ -1,13 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { SortMethod } from '~/components/article-sort/index.vue';
+import { ActionType, ClickType } from '~/types/sort';
+
+const sortMethod = ref<SortMethod>({ clickType: ClickType.Time, action: ActionType.Down })
+const handleSort = (v: SortMethod) => {
+  sortMethod.value = v
+}
+</script>
 
 <template>
-  <div class="test">
-    <Articles></Articles>
+  <div class="articles">
+    <ArticleSort @sort="handleSort" :click-type="sortMethod.clickType" :action="sortMethod.action">
+    </ArticleSort>
+    <Articles :click-type="sortMethod.clickType" :action="sortMethod.action"></Articles>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.test {
+.articles {
   width: 100%;
 }
 </style>
