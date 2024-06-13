@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { splitArticleName } from '~/utils/article';
 import type { ArticleNameSplit } from '~/types/article';
 
 const props = defineProps<{
@@ -8,11 +9,7 @@ const props = defineProps<{
 const articleInfo = ref<ArticleNameSplit>(
   { name: "", time: "", tag: "" }
 );
-const splitArticleName = (title: string) => {
-  let [name, time, tag] = title.replace(".md", "").split("@");
 
-  return { name, time, tag } as ArticleNameSplit;
-};
 onMounted(() => {
   articleInfo.value = splitArticleName(props.articleName);
 });
