@@ -4,6 +4,16 @@ export interface SortMethod {
   timeAction: string;
 }
 
+enum ActionType {
+  Up = 'up',
+  Down = 'down'
+}
+
+enum ClickType {
+  Tag = 'tag',
+  Time = 'time'
+}
+
 const props = defineProps<SortMethod>()
 
 const tagAction = ref(props.tagAction);
@@ -18,13 +28,13 @@ const emit = defineEmits<{
  * description: change action
  */
 const changeAction = (action: string) => {
-  return action === 'up' ? 'down' : 'up';
+  return action === ActionType.Up ? ActionType.Down : ActionType.Up;
 };
 
-const onClick = (type: 'tag' | 'time') => {
-  if (type === 'tag') {
+const onClick = (type: ClickType) => {
+  if (type === ClickType.Tag) {
     tagAction.value = changeAction(tagAction.value);
-  } else if (type === 'time') {
+  } else if (type === ClickType.Time) {
     timeAction.value = changeAction(timeAction.value);
   }
   emit('sort', { tagAction: tagAction.value, timeAction: timeAction.value });
@@ -35,8 +45,8 @@ const onClick = (type: 'tag' | 'time') => {
     <div class="sort-item">
       <div class="sort-tag">
         tag
-        <div class="sort-btn" @click="onClick('tag')">
-          <div v-if="tagAction === 'up'">
+        <div class="sort-btn" @click="onClick(ClickType.Tag)">
+          <div v-if="tagAction === ActionType.Up">
             up
           </div>
           <div v-else>
@@ -46,8 +56,8 @@ const onClick = (type: 'tag' | 'time') => {
       </div>
       <div class="sort-time">
         time
-        <div class="sort-btn" @click="onClick('time')">
-          <div v-if="timeAction === 'up'">
+        <div class="sort-btn" @click="onClick(ClickType.Time)">
+          <div v-if="timeAction === ActionType.Up">
             up
           </div>
           <div v-else>
