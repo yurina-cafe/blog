@@ -19,29 +19,32 @@ onMounted(() => {
 </script>
 <template>
   <div class="article-item">
-    <NuxtLink
-      :to="{ path: `/article/${articleInfo?.name}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
-      <div class="article-title">
-        <a class="article-title btn">
-          <div class="article-title content">
-            <div>></div>
-            <div>{{ articleInfo.name }}</div>
-          </div>
-        </a>
-      </div>
-    </NuxtLink>
-    <div class="article-item__tag">{{ articleInfo.tag }}</div>
+    <div class="article-item__header">
+      <NuxtLink
+        :to="{ path: `/article/${articleInfo?.name}`, query: { tag: articleInfo?.tag, time: articleInfo?.time } }">
+        <div class="article-title">
+          <a class="article-title btn">
+            <div class="article-title content">
+              <div>></div>
+              <div>{{ articleInfo.name }}</div>
+            </div>
+          </a>
+        </div>
+      </NuxtLink>
+      <div v-if="articleInfo.tag" class="article-item__tag">{{ articleInfo.tag }}</div>
+    </div>
     <div class="article-item__time">{{ formatedTime(articleInfo.time) }}</div>
   </div>
 </template>
 
-<style coped>
+<style scoped lang="scss">
 .article-item {
-  width: 100%;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  @apply w-full h-[35px];
+  @apply flex items-center gap-2 justify-between;
+
+  &__header {
+    @apply flex gap-2 items-center;
+  }
 }
 
 .article-title {
@@ -99,7 +102,6 @@ onMounted(() => {
 }
 
 .article-item__time {
-  font-weight: 300;
-  margin-left: auto;
+  @apply text-sm text-gray-500;
 }
 </style>
