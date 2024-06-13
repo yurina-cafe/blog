@@ -1,13 +1,10 @@
 <script setup lang="ts">
 export interface SortMethod {
-  name: string;
-  action: string;
-}
-
-const props = defineProps<{
   tagAction: string;
   timeAction: string;
-}>()
+}
+
+const props = defineProps<SortMethod>()
 
 const tagAction = ref(props.tagAction);
 
@@ -17,8 +14,20 @@ const emit = defineEmits<{
   (e: 'sort', v: SortMethod): void
 }>()
 
-const onClick = (method: SortMethod) => {
-  emit('sort', method);
+/**
+ * description: change action
+ */
+const changeAction = (action: string) => {
+  return action === 'up' ? 'down' : 'up';
+};
+
+const onClick = (type: 'tag' | 'time') => {
+  if (type === 'tag') {
+    tagAction.value = changeAction(tagAction.value);
+  } else if (type === 'time') {
+    timeAction.value = changeAction(timeAction.value);
+  }
+  emit('sort', { tagAction: tagAction.value, timeAction: timeAction.value });
 };
 </script>
 <template>
@@ -26,13 +35,25 @@ const onClick = (method: SortMethod) => {
     <div class="sort-item">
       <div class="sort-tag">
         tag
-        <div v-if="tagAction === 'up'" class="sort-btn" @click="onClick({ name: 'tag', action: 'up' })">up</div>
-        <div v-else class="sort-btn" @click="onClick({ name: 'tag', action: 'down' })">down</div>
+        <div class="sort-btn" @click="onClick('tag')">
+          <div v-if="tagAction === 'up'">
+            up
+          </div>
+          <div v-else>
+            down
+          </div>
+        </div>
       </div>
       <div class="sort-time">
         time
-        <div v-if="timeAction === 'up'" class="sort-btn" @click="onClick({ name: 'time', action: 'up' })">up</div>
-        <div v-else class="sort-btn" @click="onClick({ name: 'time', action: 'down' })">down</div>
+        <div class="sort-btn" @click="onClick('time')">
+          <div v-if="timeAction === 'up'">
+            up
+          </div>
+          <div v-else>
+            down
+          </div>
+        </div>
       </div>
     </div>
   </div>
