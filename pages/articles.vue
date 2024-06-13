@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import type { SortMethod } from '~/components/article-sort/index.vue';
-
-enum ActionType {
-  Up = 'up',
-  Down = 'down',
-}
+import { ActionType } from '~/types/sort';
+import type { SortMethod } from '~/types/sort';
 
 const handleSort = (v: SortMethod) => {
   console.log(v)

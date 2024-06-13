@@ -1,18 +1,5 @@
 <script setup lang="ts">
-export interface SortMethod {
-  tagAction: string;
-  timeAction: string;
-}
-
-enum ActionType {
-  Up = 'up',
-  Down = 'down'
-}
-
-enum ClickType {
-  Tag = 'tag',
-  Time = 'time'
-}
+import { ActionType, ClickType, type SortMethod } from '~/types/sort';
 
 const props = defineProps<SortMethod>()
 
