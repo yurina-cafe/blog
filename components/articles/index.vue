@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { GetArticles } from "~/composables/article";
-import type { ArticleNameSplit } from "~/types/article";
+import { getRawArticlesWithoutMapping } from "~/composables/article";
+import type { ArticleMeta } from "~/types/article";
 import type { ActionType, ClickType } from "~/types/sort";
 import { sortArticles } from "~/utils/article";
 
@@ -9,24 +9,27 @@ interface SortMethod {
   action: ActionType;
 }
 
-const props = defineProps<SortMethod>();
+const props = defineProps<{
+  sortRule: SortMethod;
+}>();
 
-const titleSplitList = ref<ArticleNameSplit[]>([]);
+const articleMetaList = ref<ArticleMeta[]>([]);
 
-const fetch = async () => {
-  const data = await GetArticles();
-  titleSplitList.value = sortArticles(data.map((title: string) => splitArticleName(title)), props.clickType, props.action);
+const sortedArticleMetaList = computed(() => {
+  return sortArticles(articleMetaList.value, props.sortRule.clickType, props.sortRule.action);
+});
+
+const fetchAndMappingArticle = async () => {
+  const data: string[] = await getRawArticlesWithoutMapping();
+  articleMetaList.value = data.map((title: string) => splitArticleName(title)) as ArticleMeta[];
 };
-onMounted(fetch)
 
-watch(() => props, (newProps) => {
-  titleSplitList.value = sortArticles(titleSplitList.value, newProps.clickType, newProps.action);
-}, { deep: true })
+onMounted(fetchAndMappingArticle)
 </script>
 
 <template>
   <div class="articles">
-    <ArticleItem v-for="(title, index) in titleSplitList" :title="title" :key="index" />
+    <ArticleItem v-for="(title, index) in sortedArticleMetaList" :title="title" :key="index" />
   </div>
 </template>
 

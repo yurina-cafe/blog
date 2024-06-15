@@ -3,7 +3,7 @@ export interface ArticleInfo {
   content: string;
 }
 
-export interface ArticleNameSplit {
+export interface ArticleMeta {
   name: string;
   tag: string;
   time: string;

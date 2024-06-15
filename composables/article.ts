@@ -1,9 +1,9 @@
 import { useHttp } from "../utils/http"
 import type { ArticleInfo } from "../types/article"
 
-export const GetArticles = async () => {
+export const getRawArticlesWithoutMapping = async () => {
   const res = await useHttp('/article/all', 'GET')
-  return res.data
+  return res.data as string[]
 }
 
 export const GetArticleContent = async (name: string) => {
