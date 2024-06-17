@@ -1,20 +1,20 @@
-import type { ArticleNameSplit } from "~/types/article";
+import type { ArticleMeta } from "~/types/article";
 import { ActionType, ClickType } from "~/types/sort";
 
 export const splitArticleName = (title: string) => {
   let [name, time, tag] = title.replace(".md", "").split("@");
 
-  return { name, time, tag } as ArticleNameSplit;
+  return { name, time, tag } as ArticleMeta;
 };
 
-export const sortArticles = (names: ArticleNameSplit[], clickType: ClickType, action: ActionType) => {
-  const compareArticles = (a: ArticleNameSplit, b: ArticleNameSplit) => {
+export const sortArticles = (names: ArticleMeta[], clickType: ClickType, action: ActionType) => {
+  const compareArticles = (a: ArticleMeta, b: ArticleMeta) => {
     // 处理 tag 点击
     if (clickType === ClickType.Tag) {
       // undefined => ""
       const tagA = a.tag ?? "";
       const tagB = b.tag ?? "";
-      if (action === ActionType.Down) { // 降序排序 最新的文章排在前面
+      if (action === ActionType.Up) { // 升序排序 最新的文章排在前面
         return tagB.localeCompare(tagA);
       }
 
@@ -25,8 +25,8 @@ export const sortArticles = (names: ArticleNameSplit[], clickType: ClickType, ac
       // undefined => "0000-00-00"
       const timeA = a.time ?? "0000-00-00";
       const timeB = b.time ?? "0000-00-00";
-      if (action === ActionType.Down) {
-        return timeB.localeCompare(timeA); // 降序排序 最新的文章排在前面
+      if (action === ActionType.Up) {
+        return timeB.localeCompare(timeA); // 升序排序 最新的文章排在前面
       }
       return timeA.localeCompare(timeB);
     }
@@ -34,5 +34,5 @@ export const sortArticles = (names: ArticleNameSplit[], clickType: ClickType, ac
   };
 
   const data = names.sort(compareArticles)
-  return data as ArticleNameSplit[];
+  return data as ArticleMeta[];
 }

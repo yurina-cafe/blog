@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import { ActionType, ClickType } from '~/types/sort';
 
 export interface SortMethod {
@@ -7,19 +7,22 @@ export interface SortMethod {
   action: ActionType;
 }
 
-const props = defineProps<SortMethod>();
-const clickType = ref(props.clickType);
-const action = ref(props.action);
+const props = defineProps<{
+  sortRule: SortMethod;
+}>();
+const sortRule = ref(props.sortRule)
+
 const emit = defineEmits<{
   (e: 'sort', v: SortMethod): void;
 }>();
 
 const changeAction = (action: ActionType) => action === ActionType.Up ? ActionType.Down : ActionType.Up;
 
+// 点击同一个tag或time时，切换排序方式
 const onClick = (click: ClickType) => {
-  action.value = clickType.value === click ? changeAction(action.value) : action.value;
-  clickType.value = click;
-  emit('sort', { clickType: click, action: action.value });
+  sortRule.value.action = sortRule.value.clickType === click ? changeAction(sortRule.value.action) : sortRule.value.action;
+  sortRule.value.clickType = click;
+  emit('sort', sortRule.value);
 };
 </script>
 
@@ -27,10 +30,12 @@ const onClick = (click: ClickType) => {
   <div class="sort">
     <div class="sort-item">
       <div class="sort__condition">
-        <div :class="['sort-tag', { 'picked': clickType === ClickType.Tag }]" @click="onClick(ClickType.Tag)">tag</div>
-        <div :class="['sort-time', { 'picked': clickType === ClickType.Time }]" @click="onClick(ClickType.Time)">time
+        <div :class="['sort-tag', { 'picked': sortRule.clickType === ClickType.Tag }]" @click="onClick(ClickType.Tag)">
+          tag</div>
+        <div :class="['sort-time', { 'picked': sortRule.clickType === ClickType.Time }]"
+          @click="onClick(ClickType.Time)">time
         </div>
-        <div>{{ action === ActionType.Up ? 'up' : 'down' }}</div>
+        <div>{{ sortRule.action === ActionType.Up ? 'up' : 'down' }}</div>
       </div>
     </div>
   </div>
