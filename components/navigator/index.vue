@@ -7,20 +7,24 @@
     <div class="navigator-content">
       <div class="flex-1">
         <NuxtLink to="/">
-          <span class="navigator__title">
+          <button class="btn btn-ghost navigator__title">
             Home
-          </span>
+          </button>
         </NuxtLink>
       </div>
       <div class="flex gap-2">
         <div>
           <NuxtLink to="/articles">
-            Articles
+            <button class="btn btn-ghost">
+              Articles
+            </button>
           </NuxtLink>
         </div>
         <div>
           <NuxtLink to="/post">
-            Post
+            <button class="btn btn-ghost">
+              Post
+            </button>
           </NuxtLink>
         </div>
       </div>
@@ -31,7 +35,7 @@
 <style scoped lang="scss">
 .navigator {
   @apply h-[50px] w-full;
-  @apply flex justify-center py-2;
+  @apply flex justify-center my-2;
 
   &-content {
     @apply backdrop-blur max-w-[1200px] w-full;
