@@ -13,7 +13,8 @@ const props = defineProps<{
 const sortRule = ref(props.sortRule)
 
 const emit = defineEmits<{
-  (e: 'sort', v: SortMethod): void;
+  // eslint-disable-next-line no-unused-vars
+  (event: 'sort', value: SortMethod): void;
 }>();
 
 const changeAction = (action: ActionType) => action === ActionType.Up ? ActionType.Down : ActionType.Up;
@@ -32,7 +33,8 @@ const onClick = (click: ClickType) => {
       <div class="sort__condition">
         <div :class="['sort-tag', { 'picked': sortRule.clickType === ClickType.Tag }]" @click="onClick(ClickType.Tag)">
           tag</div>
-        <div :class="['sort-time', { 'picked': sortRule.clickType === ClickType.Time }]"
+        <div
+:class="['sort-time', { 'picked': sortRule.clickType === ClickType.Time }]"
           @click="onClick(ClickType.Time)">time
         </div>
         <div>{{ sortRule.action === ActionType.Up ? 'up' : 'down' }}</div>

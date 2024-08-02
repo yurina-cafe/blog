@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 </script>
+
 <template>
   <div class="navigator">
     <div class="navigator-content">

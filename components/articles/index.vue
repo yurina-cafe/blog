@@ -29,7 +29,7 @@ onMounted(fetchAndMappingArticle)
 
 <template>
   <div class="articles">
-    <ArticleItem v-for="(title, index) in sortedArticleMetaList" :title="title" :key="index" />
+    <ArticleItem v-for="(title, index) in sortedArticleMetaList" :key="index" :title="title" />
   </div>
 </template>
 

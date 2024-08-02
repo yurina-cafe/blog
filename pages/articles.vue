@@ -10,9 +10,8 @@ const handleSort = (v: SortMethod) => {
 
 <template>
   <div class="articles">
-    <ArticleSort @sort="handleSort" :sort-rule="sortMethod">
-    </ArticleSort>
-    <Articles :sort-rule="sortMethod" </Articles>
+    <ArticleSort :sort-rule="sortMethod" @sort="handleSort" />
+    <Articles :sort-rule="sortMethod" />
   </div>
 </template>
 

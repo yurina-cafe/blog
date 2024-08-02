@@ -4,7 +4,7 @@
   <div>
     <div class="poster">
       <h1>Poster</h1>
-      <ArticlePoster></ArticlePoster>
+      <ArticlePoster />
     </div>
   </div>
 </template>

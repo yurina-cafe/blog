@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { splitArticleName } from '~/utils/article';
-import type { ArticleNameSplit } from '~/types/article';
+import { type ArticleMeta } from '~/types/article';
 
 const props = defineProps<{
-  title: ArticleNameSplit
+  title: ArticleMeta
 }>()
 
 </script>
@@ -20,6 +19,7 @@ const props = defineProps<{
             </div>
           </a>
         </div>
+
       </NuxtLink>
       <div v-if="props.title.tag" class="article-item__tag">{{ props.title.tag }}</div>
     </div>
