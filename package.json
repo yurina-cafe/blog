@@ -5,6 +5,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "testing": "nuxt dev --host --dotenv .env.testing",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -20,6 +22,8 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.0",
     "cross-env": "^7.0.3",
-    "sass": "^1.77.4"
+    "sass": "^1.77.4",
+    "@antfu/eslint-config": "^2.24.1",
+    "eslint": "9.5.0"
   }
 }
