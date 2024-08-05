@@ -11,6 +11,11 @@ const pageSets = [
     href: '/post',
     title: '上传',
     icon: 'material-symbols:drive-folder-upload-rounded',
+  },
+  {
+    href: '/books',
+    title: '书单',
+    icon: 'material-symbols:book-5-rounded',
   }
 ]
 </script>
@@ -27,14 +32,29 @@ const pageSets = [
           </button>
         </NuxtLink>
       </div>
-      <div class="flex gap-2">
-        <div v-for="page in pageSets" :key="page.title">
+      <div class="flex gap-2 ">
+        <div v-for="page in pageSets" :key="page.title" class="navigator__pageSets">
           <NuxtLink :to="page.href">
             <button class="btn btn-ghost">
               <Icon :icon="page.icon" height="20px" />
               <p>{{ page.title }}</p>
             </button>
           </NuxtLink>
+        </div>
+        <div class="navigator__pageDrop">
+          <div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost p-2">
+              <Icon icon="material-symbols:add-circle-outline-rounded" height="20px" />
+            </div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-1">
+              <li v-for="page in pageSets" :key="page.title">
+                <NuxtLink :to="page.href">
+                  <Icon :icon="page.icon" height="20px" />
+                  <p>{{ page.title }}</p>
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -59,12 +79,19 @@ const pageSets = [
     font-size: 16px;
     @apply text-primary font-light;
   }
+
+  &__pageDrop {
+    @apply hidden;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .navigator__subtitle {
-    display: none;
+  .navigator__pageDrop {
+    display: block;
   }
 
+  .navigator__pageSets {
+    display: none;
+  }
 }
 </style>
