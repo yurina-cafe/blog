@@ -2,7 +2,7 @@
 import { getRawArticlesWithoutMapping } from "~/composables/article";
 import type { ArticleMeta } from "~/types/article";
 import type { ActionType, ClickType } from "~/types/sort";
-import { sortArticles } from "~/utils/article";
+import { sortArticles, splitArticleName } from "~/utils/article";
 
 interface SortMethod {
   clickType: ClickType;
@@ -20,8 +20,12 @@ const sortedArticleMetaList = computed(() => {
 });
 
 const fetchAndMappingArticle = async () => {
-  const data: string[] = await getRawArticlesWithoutMapping();
-  articleMetaList.value = data.map((title: string) => splitArticleName(title)) as ArticleMeta[];
+  try {
+    const data: string[] = await getRawArticlesWithoutMapping();
+    articleMetaList.value = data.map((title: string) => splitArticleName(title)) as ArticleMeta[];
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+  }
 };
 
 onMounted(fetchAndMappingArticle)

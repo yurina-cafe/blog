@@ -11,7 +11,7 @@ const handleSort = (v: SortMethod) => {
 <template>
   <div class="articles">
     <ArticleSort :sort-rule="sortMethod" @sort="handleSort" />
-    <Articles :sort-rule="sortMethod" />
+    <ArticleList :sort-rule="sortMethod" />
   </div>
 </template>
 
