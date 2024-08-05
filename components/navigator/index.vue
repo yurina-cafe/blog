@@ -41,20 +41,18 @@ const pageSets = [
             </button>
           </NuxtLink>
         </div>
-        <div class="navigator__pageDrop">
-          <div class="dropdown dropdown-hover dropdown-bottom dropdown-end">
-            <div tabindex="0" role="button" class="btn btn-ghost p-2">
-              <Icon icon="material-symbols:add-circle-outline-rounded" height="20px" />
-            </div>
-            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-1">
-              <li v-for="page in pageSets" :key="page.title">
-                <NuxtLink :to="page.href">
-                  <Icon :icon="page.icon" height="20px" />
-                  <p>{{ page.title }}</p>
-                </NuxtLink>
-              </li>
-            </ul>
+        <div class="dropdown dropdown-hover dropdown-bottom dropdown-end navigator__pageDrop">
+          <div tabindex="0" role="button" class="btn btn-ghost p-2">
+            <Icon icon="material-symbols:add-circle-outline-rounded" height="20px" />
           </div>
+          <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-1">
+            <li v-for="page in pageSets" :key="page.title">
+              <NuxtLink :to="page.href">
+                <Icon :icon="page.icon" height="20px" />
+                <p>{{ page.title }}</p>
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
