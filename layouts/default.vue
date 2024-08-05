@@ -25,7 +25,7 @@
 
 .main {
   margin: auto 0;
-  padding: 20px;
+  padding: 0 20px;
   max-width: 1200px;
   width: 100%;
   display: flex;

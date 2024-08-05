@@ -7,3 +7,8 @@ a{
   text-decoration: none;
   color:inherit;
 }
+
+/* header */
+h1{
+  @apply text-3xl font-bold mb-[8px];
+}
