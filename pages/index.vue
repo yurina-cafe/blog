@@ -3,9 +3,8 @@
 <template>
   <div class="home">
     <HeroCard :title="'Amumu\'s blog'" :desc="['Hello 这里是 amumu 的博客', '我来自 cn, 作为前端开发, 目前大三在读']" />
-    <div class="home-hero">
-      博客首页
-    </div>
+
+    <TechStack />
   </div>
 </template>
 
