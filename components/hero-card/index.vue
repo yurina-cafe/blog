@@ -11,7 +11,7 @@ const props = defineProps<{
 }>();
 </script>
 <template>
-  <div class="w-full p-6 rounded-xl relative overflow-hidden" :style="cardBackgroundStyle">
+  <div class="w-full p-6 rounded-xl" :style="cardBackgroundStyle">
     <h1 class="mb-4 flex items-center gap-1">
       <Icon icon="material-symbols:book-5-rounded" />
       {{ props.title }}
