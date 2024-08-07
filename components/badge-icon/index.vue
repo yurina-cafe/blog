@@ -42,23 +42,24 @@ enum IconBadgeType {
   ps = 'logos:adobe-photoshop',
   javascript = 'logos:javascript',
   nginx = 'logos:nginx',
-  uniapp = 'other'
+  uniapp = 'png',
+
 }
 
-enum otherIconBadgeType {
+enum pngIconBadgeType {
   uniapp = UniApp
 }
 
 interface Props {
-  name: keyof typeof IconBadgeType;
+  name: string;
   size?: string;
   color?: string;
 }
 
 const props = defineProps<Props>();
-const isOtherLogo = computed(() => IconBadgeType[props.name] === 'other');
+const isOtherLogo = computed(() => IconBadgeType[props.name] === 'png');
 const iconName = computed(() => {
-  if (isOtherLogo.value) return otherIconBadgeType[props.name ?? 'uniapp'] ?? otherIconBadgeType.uniapp;
+  if (isOtherLogo.value) return pngIconBadgeType[props.name ?? 'uniapp'] ?? pngIconBadgeType.uniapp;
   return IconBadgeType[props.name ?? 'nuxtjs'] ?? IconBadgeType.nuxtjs;
 });
 </script>

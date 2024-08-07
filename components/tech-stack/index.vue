@@ -61,11 +61,15 @@ const blocks = [
 ]
 </script>
 <template>
-  <div class="tech-stack">
+  <div class="tech-stack relative overflow-hidden">
     <h2 class="flex items-center gap-2">
       <Icon icon="mingcute:box-3-fill" height="28px" />
       技术栈
     </h2>
+    <div>个人经常使用的技术和工具 🔧 </div>
+    <div class="absolute right-[-25px] top-[-22px]">
+      <Icon icon="line-md:moon-filled-alt-to-sunny-filled-loop-transition" height="120px" />
+    </div>
     <div class="tech-stack__skills">
       <div v-for="block in blocks " :key="block.name" class="block">
         <div class="block-title">
