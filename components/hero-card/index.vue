@@ -13,7 +13,7 @@ const props = defineProps<{
 <template>
   <div class="w-full p-6 rounded-xl" :style="cardBackgroundStyle">
     <h1 class="mb-4 flex items-center gap-1">
-      <Icon icon="material-symbols:book-5-rounded" />
+      <Icon icon="material-symbols:book-2-rounded" />
       {{ props.title }}
     </h1>
     <div v-for="item, index in props.desc" :key="index" class="mb-1">

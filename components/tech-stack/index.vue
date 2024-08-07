@@ -4,7 +4,7 @@ const blocks = [
   {
     name: 'Web 框架',
     list: [
-      'vuejs',
+      'vue',
       'nuxtjs',
       'react',
     ]
@@ -12,8 +12,8 @@ const blocks = [
   {
     name: 'Web 设计',
     list: [
-      'tailwindcss',
-      'elementplus',
+      'tailwind',
+      'element',
       'antd',
       'sass',
       'd3js'
@@ -25,6 +25,7 @@ const blocks = [
       'ionic',
       'flutter',
       'uniapp',
+      'unity'
     ]
   },
   {
@@ -34,16 +35,27 @@ const blocks = [
       'vite',
       'eslint',
       'prettier',
+      'nginx',
+      'jest'
     ]
   },
   {
-    name: '工具',
+    name: '工具 / 软件',
     list: [
       'git',
       'github',
       'ps',
       'postman',
       'notion',
+      'code'
+    ]
+  },
+  {
+    name: '常用语言',
+    list: [
+      'javascript',
+      'typescript',
+      'c#',
     ]
   }
 ]
@@ -51,15 +63,17 @@ const blocks = [
 <template>
   <div class="tech-stack">
     <h2 class="flex items-center gap-2">
-      <Icon icon="lucide:box" height="28px" />
+      <Icon icon="mingcute:box-3-fill" height="28px" />
       技术栈
     </h2>
     <div class="tech-stack__skills">
-      <div v-for="block in blocks " :key="block.name" class="apps">
-        <div class="apps-title">
-          <div v-for="(item, index) in block" :key="index" class="apps-item">
-            <div>{{ item }}</div>
-          </div>
+      <div v-for="block in blocks " :key="block.name" class="block">
+        <div class="block-title">
+          {{ block.name }}
+        </div>
+        <div v-for="(item, index) in block.list" :key="index" class="block-item">
+          <BadgeIcon :name="item" size="18px" />
+          <div>{{ item }}</div>
         </div>
       </div>
     </div>
@@ -72,19 +86,19 @@ const blocks = [
   background: linear-gradient(90deg, #d8f3e8bf 0%, #bbf0ff99 100%);
 
   &__skills {
-    @apply flex flex-wrap p-4 gap-[80px];
+    @apply flex flex-wrap p-4 gap-[60px];
   }
 }
 
-.apps {
-  @apply flex flex-col gap-[6px];
+.block {
+  @apply flex flex-col gap-[6px] items-center;
 
   &-title {
     @apply text-lg font-semibold my-2;
   }
 
   &-item {
-    @apply flex justify-between items-center gap-1 text-sm w-[90px];
+    @apply flex justify-between items-center gap-1 text-xs w-[100px];
   }
 }
 </style>

@@ -1,54 +1,34 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Icon from 'astro-icon/components/Icon.vue';
+import { Icon } from '@iconify/vue';
+import UniApp from 'assets/icons/uni-app.png';
 
-enum AstroIconBadgeType {
+enum IconBadgeType {
   appStore = 'logos:apple-app-store',
-  astro = 'logos:astro-icon',
   gitHub = 'logos:github-icon',
-  twitter = 'logos:twitter-icon',
-  blueprint = 'logos:blueprint',
   html = 'logos:html-5',
-  java = 'logos:java',
   linux = 'logos:ubuntu',
   markdown = 'logos:markdown',
-  star = 'logos:blogger',
-  unreal = 'logos:unrealengine-icon',
   vue = 'logos:vue',
   nuxtjs = 'logos:nuxt-icon',
   vueuse = 'logos:vueuse',
-  nextjs = 'logos:nextjs-icon',
   react = 'logos:react',
-  svelte = 'logos:svelte-icon',
-  hexo = 'logos:hexo',
   element = 'logos:element',
   antd = 'logos:ant-design',
-  headless = 'logos:headlessui-icon',
   d3js = 'logos:d3',
   threejs = 'logos:threejs',
   tailwind = 'logos:tailwindcss-icon',
   sass = 'logos:sass',
-  animejs = 'logos:adobe-animate',
-  gis = 'logos:leaflet',
-  electron = 'logos:electron',
-  tauri = 'logos:tauri',
   ionic = 'logos:ionic-icon',
-  capacitor = 'logos:capacitorjs-icon',
   flutter = 'logos:flutter',
   unity = 'logos:unity',
-  avalonia = 'logos:dotnet',
-  win32api = 'logos:microsoft-windows-icon',
   nodejs = 'logos:nodejs-icon',
-  nestjs = 'logos:nestjs',
-  ktor = 'logos:ktor-icon',
   vite = 'logos:vitejs',
   vitest = 'logos:vitest',
   jest = 'logos:jest',
   eslint = 'logos:eslint',
   prettier = 'logos:prettier',
-  postgresql = 'logos:postgresql',
   blender = 'logos:blender',
-  extension = 'logos:chrome-web-store',
   git = 'logos:git-icon',
   docker = 'logos:docker-icon',
   jenkins = 'logos:jenkins',
@@ -56,31 +36,36 @@ enum AstroIconBadgeType {
   figma = 'logos:figma',
   postman = 'logos:postman-icon',
   notion = 'logos:notion-icon',
-  obsidian = 'logos:obsidian-icon',
-  codepen = 'logos:codepen-icon',
   code = 'logos:visual-studio-code',
   typescript = 'logos:typescript-icon',
   'c#' = 'logos:c-sharp',
-  kotlin = 'logos:kotlin-icon',
-  python = 'logos:python',
-  lua = 'logos:lua',
+  ps = 'logos:adobe-photoshop',
+  javascript = 'logos:javascript',
+  nginx = 'logos:nginx',
+  uniapp = 'other'
+}
+
+enum otherIconBadgeType {
+  uniapp = UniApp
 }
 
 interface Props {
-  name: keyof typeof AstroIconBadgeType;
+  name: keyof typeof IconBadgeType;
   size?: string;
   color?: string;
 }
 
 const props = defineProps<Props>();
-
+const isOtherLogo = computed(() => IconBadgeType[props.name] === 'other');
 const iconName = computed(() => {
-  return AstroIconBadgeType[props.name ?? 'astro'] ?? AstroIconBadgeType.astro;
+  if (isOtherLogo.value) return otherIconBadgeType[props.name ?? 'uniapp'] ?? otherIconBadgeType.uniapp;
+  return IconBadgeType[props.name ?? 'nuxtjs'] ?? IconBadgeType.nuxtjs;
 });
 </script>
 
 <template>
-  <Icon :name="iconName" :size="props.size" :color="props.color" />
+  <Icon v-if="!isOtherLogo" :icon="iconName" :height="props.size" :width="props.size" :color="props.color" />
+  <img v-else :src="UniApp" :alt="props.name" :width="props.size" :height="props.size" />
 </template>
 
 <style scoped lang="scss"></style>
