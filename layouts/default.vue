@@ -24,13 +24,6 @@
 }
 
 .main {
-  margin: auto 0;
-  padding: 0 20px;
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
+  @apply flex flex-1 flex-col items-center mx-auto w-full max-w-[1200px] pt-[20px] px-[20px];
 }
 </style>

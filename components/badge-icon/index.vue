@@ -43,7 +43,6 @@ const IconBadgeType = {
   javascript: 'logos:javascript',
   nginx: 'logos:nginx',
   uniapp: 'png',
-
 }
 
 const pngIconBadgeType = {
