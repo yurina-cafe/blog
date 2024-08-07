@@ -16,7 +16,7 @@ const blocks = [
       'element',
       'antd',
       'sass',
-      'd3js'
+      'threejs'
     ]
   },
   {
@@ -56,6 +56,7 @@ const blocks = [
       'javascript',
       'typescript',
       'c#',
+      'markdown',
     ]
   }
 ]
@@ -66,7 +67,7 @@ const blocks = [
       <Icon icon="mingcute:box-3-fill" height="28px" />
       技术栈
     </h2>
-    <div>个人经常使用的技术和工具 🔧 </div>
+    <div>个人掌握的技能和常用的开发工具 🔧 </div>
     <div class="absolute right-[-25px] top-[-22px]">
       <Icon icon="line-md:moon-filled-alt-to-sunny-filled-loop-transition" height="120px" />
     </div>

@@ -2,7 +2,7 @@
 
 <template>
   <div class="home">
-    <HeroCard :title="'Amumu\'s blog'" :desc="['Hello 这里是 amumu 的博客', '我来自 cn, 作为前端开发, 目前大三在读']" />
+    <HeroCard :title="'Amumu\'s blog'" :desc="['Hello 这里是 amumu 的博客', '我来自 cn, 前端开发实习生, 目前大三在读']" />
 
     <TechStack />
 
