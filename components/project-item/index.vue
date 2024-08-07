@@ -30,12 +30,12 @@ const props = defineProps<{
 }
 
 /* common */
-.card-hero__content {
+.card-hero__common {
   @apply relative rounded-xl w-full h-full flex flex-col items-center text-white;
 }
 
 .card-hero__body {
-  @apply card-hero__content;
+  @apply card-hero__common;
 }
 
 /* image & background */
@@ -44,7 +44,7 @@ const props = defineProps<{
 }
 
 .card-hero__backdrop {
-  @apply card-hero__content backdrop-blur-sm;
+  @apply card-hero__common backdrop-blur-sm;
   background-color: rgba(0, 0, 0, 0.22);
   transition: all 0.3s ease;
 }
@@ -68,18 +68,17 @@ const props = defineProps<{
   background-size: 12px 12px;
 }
 
-/* content */
-.card-hero__content h3 {
+h3 {
   @apply text-2xl font-bold mt-[30px];
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-.card-hero__content ._content {
+._content {
   @apply flex flex-col gap-2 items-center text-xs text-gray-100 mt-[10px];
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-.card-hero__content footer {
+footer {
   @apply absolute bottom-[0] text-gray-300 flex w-full px-8 items-end justify-end gap-4;
 }
 </style>

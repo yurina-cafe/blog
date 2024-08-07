@@ -10,11 +10,9 @@
 
 <style coped>
 .footer {
-  height: 80px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply flex items-center justify-center;
+  @apply h-[80px] mt-[80px] w-full;
+
   color: #aaa;
   background: repeating-linear-gradient(45deg,
       #222,
