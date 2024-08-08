@@ -59,7 +59,7 @@ const props = defineProps<Props>();
 const isOtherLogo = computed(() => IconBadgeType[props.name as keyof typeof IconBadgeType] === 'png');
 const iconName = computed(() => {
   if (isOtherLogo.value) return pngIconBadgeType[props.name as keyof typeof pngIconBadgeType ?? 'uniapp'] ?? pngIconBadgeType.uniapp;
-  return IconBadgeType[props.name as keyof typeof IconBadgeType ?? 'nuxtjs'] ?? IconBadgeType.nuxtjs;
+  return IconBadgeType[props.name as keyof typeof IconBadgeType ?? 'markdown'] ?? IconBadgeType.markdown;
 });
 </script>
 
