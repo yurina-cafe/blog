@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import ImgCssAnimation from 'assets/images/cssanimation.jpg'
-import ImgBlog from 'assets/images/blog.jpg'
-import ImgZustCloud from 'assets/images/zustcloud.jpg'
-import ImgAmumuStore from 'assets/images/amumustore.png'
+import ImgCssAnimation from 'assets/images/cssanimation.png'
+import ImgBlog from 'assets/images/blog.png'
+import ImgBlogServer from 'assets/images/blogserver.jpeg'
+import ImgZustCloud from 'assets/images/zustcloud.jpeg'
+import ImgAmumuStore from 'assets/images/amumustore.jpeg'
 
 import React from '/components/badge-set/react.vue'
 import Typescript from '/components/badge-set/ts.vue'
@@ -70,7 +71,7 @@ import Element from '/components/badge-set/element.vue'
         </a>
       </template>
     </ProjectItem>
-    <ProjectItem title="Blog Server" :img="ImgBlog">
+    <ProjectItem title="Blog Server" :img="ImgBlogServer">
       <template #content>
         <div>
           🎑 基于nodejs的静态文件资源管理系统。
