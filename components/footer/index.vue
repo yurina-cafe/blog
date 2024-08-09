@@ -39,7 +39,7 @@ const linkSets = [
 </template>
 <style scoped lang="scss">
 .footer {
-  @apply flex justify-center;
+  @apply flex justify-center items-center;
   @apply h-[80px] mt-[80px] w-full;
 
   color: #aaa;
