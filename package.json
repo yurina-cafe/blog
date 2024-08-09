@@ -3,7 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build:dev": "nuxt build --dotenv .env.dev",
+    "build:prod": "nuxt build --dotenv .env.tesing",
     "dev": "nuxt dev --dotenv .env.dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
