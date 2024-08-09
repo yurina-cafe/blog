@@ -5,7 +5,7 @@ const linkSets = [
   {
     icon: 'mingcute:github-fill',
     name: '我的GitHub',
-    link: 'https://github.com/nesb01t'
+    link: 'https://github.com/chenmh0901'
   },
 ]
 </script>
