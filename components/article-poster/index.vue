@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { PostArticle } from '~/composables/article';
-import type { ArticleInfo, ArticleNameSplit } from '~/types/article';
+import type { ArticleInfo, ArticleMeta } from '~/types/article';
 
 interface ArticleInfoPost {
-  title: ArticleNameSplit;
+  title: ArticleMeta;
   content: string;
 }
 const article = ref<ArticleInfoPost>({
@@ -36,13 +36,13 @@ const post = async () => {
     <h1>文章发布</h1>
     <div class="article-edit">
       <div class="text-input">
-        <input type="text" v-model="article.title.name" placeholder="文章标题" />
+        <input v-model="article.title.name" type="text" placeholder="文章标题">
       </div>
       <div class="text-input">
-        <input type="text" v-model="article.title.tag" placeholder="文章标签" />
+        <input v-model="article.title.tag" type="text" placeholder="文章标签">
       </div>
       <div class="text-content">
-        <textarea v-model="article.content" placeholder="文章内容"></textarea>
+        <textarea v-model="article.content" placeholder="文章内容" />
       </div>
       <div>
         <button @click="post">发布</button>

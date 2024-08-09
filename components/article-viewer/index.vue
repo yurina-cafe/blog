@@ -25,7 +25,7 @@ onMounted(fetch);
 </script>
 
 <template>
-  <div v-html="content"></div>
+  <div v-html="content"/>
 </template>
 
 <style lang="scss" scoped></style>

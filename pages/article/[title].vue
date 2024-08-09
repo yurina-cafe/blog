@@ -1,27 +1,31 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 
-const { title } = route.params;
-const { tag, time } = route.query;
+const { title } = route.params
+const { tag, time } = route.query
 
-const fileName = ref('');
-const spliceFileName = () => {
-  fileName.value = [title, time, tag].filter(Boolean).join('@');
+const fileName = ref('')
+function spliceFileName() {
+  fileName.value = [title, time, tag].filter(Boolean).join('@')
 }
 onBeforeMount(spliceFileName)
 </script>
+
 <template>
   <div class="viewer">
     <div class="viewer-header">
       <div class="back-articles">
         <NuxtLink to="/articles">
           <span>
-            < </span>
+            ->
+          </span>
         </NuxtLink>
       </div>
-      <h1 class="article__title">{{ title }}</h1>
+      <h1 class="article__title">
+        {{ title }}
+      </h1>
     </div>
     <div class="article__tag">
       <div class="tag-container">

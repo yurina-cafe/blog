@@ -1,0 +1,19 @@
+html,body{
+  @apply m-0 p-0;
+  @apply min-h-[100vh];
+  font-family: 'Exo 2', 'Noto Sans SC', monospace, sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
+}
+
+/* header */
+h1{
+  @apply text-3xl font-bold mb-[8px];
+}
+
+h2{
+  @apply text-2xl font-bold mb-[8px];
+}
