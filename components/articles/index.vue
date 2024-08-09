@@ -18,7 +18,11 @@ const articleMetaList = ref<ArticleMeta[]>([]);
 const fetchAndMappingArticle = async () => {
   try {
     const data: string[] = await getRawArticlesWithoutMapping();
-    articleMetaList.value = data.map((fileName: string) => splitArticleName(fileName)) as ArticleMeta[];
+    if (Array.isArray(data)) {
+      articleMetaList.value = data.map((fileName: string) => splitArticleName(fileName)) as ArticleMeta[];
+    } else {
+      console.error("Error fetching articles: data is not an array");
+    }
   } catch (error) {
     console.error("Error fetching articles:", error);
   }
